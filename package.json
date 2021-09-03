@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "bin": {
-    "zf-pack": "./bin/zf-pack.js"
+    "zf-pack": "./bin/zf-pack.js" // 执行bin目录下的这个文件
   },
   "devDependencies": {
     "@babel/generator": "^7.12.1",
@@ -14,3 +14,10 @@
     "ejs": "^3.1.5"
   }
 }
+
+
+当本地安装myapp时，Npm会寻找这个文件，在./node_modules/.bin/目录下建立符号链接。
+在上面的例子中，zf-pack.js会建立符号链接./node_modules/.bin/someTool。由于./node_modules/.bin/目录会在运行时加入系统的PATH变量，
+因此在运行npm时，就可以不带路径，直接通过命令来调用这些脚本。
+
+所有node_modules/.bin/目录下的命令，都可以用npm run [命令]的格式运行。bin中引用的文件需以#!/usr/bin/env node开头
